@@ -1,0 +1,233 @@
+//basic route
+app.get('/biodata/:nama/:tempat/:tanggal/:jk/:agama/:alamat/:telepon/:email/:hobi/:cita', (req, res) => {
+    var nama = req.params.nama ;
+    var Tempat_Lahir = req.params.tempat ;
+    var Tanggal_Lahir = req.params.tanggal ;
+    var Jenis_kelamin = req.params.jk ;
+    var Agama = req.params.agama ;
+    var Alamat = req.params.alamat ;
+    var Telepon = req.params.telepon ;
+    var Email = req.params.email ;
+    var Hobi = req.params.hobi ;
+    var Cita_Cita = req.params.cita ;
+    res.send(
+        'Nama : '+ nama + '<br>' +
+        'Tempat Lahir : ' + Tempat_Lahir + '<br>' +
+        'Tanggal Lahir : ' + Tanggal_Lahir + '<br>' +
+        'Jenis kelamin : ' + Jenis_kelamin + '<br>' +
+        'Agama : ' + Agama + '<br>' +
+        'Alamat : ' + Alamat + '<br>' +
+        'Telepon : ' + Telepon + '<br>' +
+        'Email : ' + Email + '<br>' +
+        'Hobi : ' + Hobi + '<br>' +
+        'Cita-Cita : ' + Cita_Cita
+    );
+});
+
+app.get('/aritmatika', (req, res) => {
+    var bilangan1 = 10;
+    var bilangan2 = 5;
+    var tambah = bilangan1 + bilangan2;
+    var pengurangan = bilangan1 - bilangan2;
+    var pembagian = bilangan1 / bilangan2;
+    var perkalian = bilangan1 * bilangan2;
+    res.send(
+        '<h3>Penjumlahan</h3>' + 
+        'Bilangan 1 : ' + bilangan1 + '<br>' +
+        'Bilangan 2 : ' + bilangan2 + '<br>' +
+        'Hasil : ' + tambah + '<hr> <br>' +
+
+        '<h3>Pengurangan</h3>' + 
+        'Bilangan 1 : ' + bilangan1 + '<br>' +
+        'Bilangan 2 : ' + bilangan2 + '<br>' +
+        'Hasil : ' + pengurangan + '<hr> <br>' +
+        
+        '<h3>Pembagian</h3>' + 
+        'Bilangan 1 : ' + bilangan1 + '<br>' +
+        'Bilangan 2 : ' + bilangan2 + '<br>' +
+        'Hasil : ' + pembagian + '<hr> <br>' +
+        
+        '<h3>Perkalian</h3>' + 
+        'Bilangan 1 : ' + bilangan1 + '<br>' +
+        'Bilangan 2 : ' + bilangan2 + '<br>' +
+        'Hasil : ' + perkalian + '<hr> <br>' 
+    );
+});
+
+app.get('/bangun_datar', (req, res) => {
+        // PERSEGI
+        var sisi = 5;
+        var persegi= sisi * sisi;
+        
+        // PERSEGI PANJANG
+        var panjang = 15;
+        var lebar = 10;
+        var luas = panjang * lebar;
+
+        // SEGITIGA
+        var alas = 20;
+        var tinggi = 15;
+        var segitiga = alas * tinggi / 2;
+
+        // LINGKARAN
+        var konstanta = 3.14;
+        var jari2_linkaran = 10;
+        var lingkaran = konstanta * jari2_linkaran * jari2_linkaran;
+    res.send(
+        '<h3>Persegi</h3>' +
+        'Nilai sisi : ' + sisi + '<br>' +
+        // 'Rumus : sisi x sisi' + '<br>' +
+        // 'Hitung : ' + sisi + ' x ' + sisi + ' = ' + persegi + '<hr><br>' +
+        'Hasil : ' + persegi + '<hr><br>' +
+
+        '<h3>Persegi Panjang</h3>' +
+        'Panjang : ' + panjang + '<br>' +
+        'lebar : ' + lebar + '<br>' +
+        // 'rumus : panjang x lebar' + '<br>' +
+        'luas : ' + luas + '<hr><br>' +
+
+        '<h3>Segitiga</h3>' +
+        'alas : ' + alas + '<br>' +
+        'tinggi : ' + tinggi + '<br>' +
+        'Hasil : ' + segitiga + '<hr><br>' +
+
+        '<h3>Lingkaran</h3>' +
+        'konstanta : ' + konstanta + '<br>' +
+        'jari-jari : ' + jari2_linkaran + '<br>' +
+        'hasil : ' + lingkaran
+        );
+});
+
+app.get('/tes/:nama/:kelas/:pts/:pas', (req, res) => {
+        var nama = req.params.nama;
+        var kelas = req.params.kelas;
+        var pts = parseInt(req.params.pts);
+        var pas = parseInt(req.params.pas);
+        var rapot = (pts + pas) / 2;
+
+        if (rapot >= 90 == rapot <= 100) {
+           var grade = 'A';
+        } else if (rapot >= 80) {
+            var grade = 'B';
+        } else if (rapot >= 70) {
+            var grade = 'C';
+        } else if (rapot >= 60) {
+            var grade = 'D';
+        } else if (rapot >= 50) {
+            var grade = 'E';
+        } else if (rapot >= 0) {
+            var grade = 'diajar deui cing getol !!!!!!!!!!!';
+        } else {
+            var grade = 'te valid';
+        }
+    res.send(
+        'Nama : ' + nama + '<br>' +
+        'Kelas : ' + kelas + '<br>' +
+        'Nilai pts : ' + pts + '<br>' +
+        'Nilai pas : ' + pas + '<br>' +
+        'Nilai Rapot : ' + rapot + '<br>' +
+        'Keterangan : Grade ' + grade
+    );
+});
+
+app.get('/bersarang/:nama/:jurusan/:kelas', (req, res) => {
+    var nama = req.params.nama;
+    var jurusan = req.params.jurusan;
+    var kelas = req.params.kelas;
+    
+    if (jurusan == 'rpl') {
+        if (kelas == '10') {
+            var ket = 'anda kelas 10 RPL';
+        } else if (kelas == '11') {
+            var ket = 'anda kelas 11 RPL';
+        } else if (kelas == '12') {
+            var ket = 'anda kelas 12 RPL';
+        } else {
+            var ket = 'ANDA SUDAH MENJADI ALUMNI'
+        }
+     } else if (jurusan == 'tkro') {
+        if (kelas == '10') {
+            var ket = 'anda kelas 10 TKRO';
+        } else if (kelas == '11') {
+            var ket = 'anda kelas 11 TKRO';
+        } else if (kelas == '12') {
+            var ket = 'anda kelas 12 TKRO';
+        } else {
+            var ket = 'ANDA SUDAH MENJADI ALUMNI'
+        }
+     } else if (jurusan == 'tbsm') {
+        if (kelas == '10') {
+            var ket = 'anda kelas 10 TBSM';
+        } else if (kelas == '11') {
+            var ket = 'anda kelas 11 TBSM';
+        } else if (kelas == '12') {
+            var ket = 'anda kelas 12 TBSM';
+        } else {
+            var ket = 'ANDA SUDAH MENJADI ALUMNI'
+        }
+    } else {
+         var ket = 'jurusan tidak tersedia';
+     }
+
+    res.send(
+        'Nama : ' + nama + '<br>' +
+        'Jurusan : ' + ket
+    );
+});
+
+app.get('/latihan/:nama/:tanggal/:jenis/:pesanan/:jumlah', (req, res) => {
+    var nama = req.params.nama;
+    var tanggal = req.params.tanggal;
+    var jenis = req.params.jenis;
+    var pesanan = req.params.pesanan;
+    var jumlah = parseInt(req.params.jumlah);
+
+    if ( jenis == 'makanan' ) {
+        if ( pesanan == 'nasi goreng') {
+            harga = 20000;
+        } else if ( pesanan == 'mie goreng') {
+            harga = 30000;
+        } else if ( pesanan == 'ayam goreng') {
+            harga = 40000;
+        } else {
+            var harga = '-';
+        }
+    } else if ( jenis == 'minuman') {
+        if ( pesanan == 'air') {
+            harga = 10000;
+        } else if ( pesanan == 'jus') {
+            harga = 20000;
+        } else if ( pesanan == 'kopi') {
+            harga = 30000;
+        } else {
+            var harga = '-'
+        }
+    } else {
+        var harga = 'TIDAK ADA'
+    }
+
+    var diskon;
+    var total = jumlah * harga
+
+    if (total > 100000) {
+        diskon = total - (total * 0.5);
+    } else {
+        diskon = 0;
+    }
+    
+    var total_bayar = total - diskon;
+    res.send(
+        '<h3>STARBUCK LOKAL</h3>' +
+        '<pre>Nama Pembeli  : ' + nama + '<br>' +
+        'Tanggal       : ' + tanggal + '<br>' +
+        'Jenis         : ' + jenis + '<br>' +
+        'Pesanan       : ' + pesanan + '<br>' +
+        'Harga         : ' + harga + '<br>' +
+        'Jumlah        : ' + jumlah + '<br></pre>' +
+        '<b>---------------------------------------</b>' + '<br>' +
+        '<pre>Total         : ' + total + '<br>' +
+        'Diskon        : ' + diskon + '<br>' +
+        'Total Bayar   : ' + total_bayar + '</pre>'
+
+    );
+});
